@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/project-manager/projects", {data:[{}],fetch:{},mutations:void 0});
