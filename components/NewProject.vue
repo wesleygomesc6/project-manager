@@ -22,9 +22,9 @@
                                 type="number" hide-spin-buttons></v-text-field>
                         </v-col>
                         <v-col cols="12">
-                            <v-autocomplete @click="getMembers" v-model="project.members" :items="members" item-text="name"
-                                label="Members" hide-selected item-value="name" small-chips clearable return-object dense
-                                multiple deletable-chips no-data-text="Nenhum membro encontrado">
+                            <v-autocomplete v-model="project.members" :items="members" item-text="name" label="Members"
+                                hide-selected item-value="name" small-chips clearable return-object dense multiple
+                                deletable-chips no-data-text="Nenhum membro encontrado">
                             </v-autocomplete>
                         </v-col>
                     </v-row></v-form>
@@ -46,15 +46,33 @@ export default {
         return {
             formTitle: 'New Project',
             member: new Member(),
-            members: []
+            members: [
+                {
+                    id: 1,
+                    name: "Bill Gates",
+                    status: "Management"
+                },
+                {
+                    id: 2,
+                    name: "Stive Jobs",
+                    status: "Developer"
+                },
+                {
+                    id: 3,
+                    name: "Hello World",
+                    status: "Architect"
+                },
+                {
+                    id: 4,
+                    name: "James Web",
+                    status: "Tester"
+                }
+            ]
         }
     },
 
 
     methods: {
-        getMembers() {
-            this.$axios.$get('/api/members.json').then(res => this.members = res.members)
-        },
         salvar() {
             let id = this.maxId
             this.project.id = ++id

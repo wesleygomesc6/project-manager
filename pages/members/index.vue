@@ -34,7 +34,28 @@ export default {
     data() {
         return {
             member: new Member(),
-            members: [],
+            members: [
+                {
+                    id: 1,
+                    name: "Bill Gates",
+                    status: "Management"
+                },
+                {
+                    id: 2,
+                    name: "Stive Jobs",
+                    status: "Developer"
+                },
+                {
+                    id: 3,
+                    name: "Hello World",
+                    status: "Architect"
+                },
+                {
+                    id: 4,
+                    name: "James Web",
+                    status: "Tester"
+                }
+            ],
             titleTable: "Members",
             search: "",
             dialog: false,
@@ -45,9 +66,6 @@ export default {
                 { text: "Actions", value: "actions", align: 'center', width: '10%' },
             ],
         };
-    },
-    created() {
-        this.$axios.$get("/api/members.json").then(res => this.members = res.members);
     },
     computed: {
         max() {
